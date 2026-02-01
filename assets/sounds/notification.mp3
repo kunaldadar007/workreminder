@@ -1,0 +1,15 @@
+# This is a placeholder file for the notification sound
+# In a real implementation, you would place an actual MP3 file here
+# You can download free notification sounds from sites like:
+# - https://www.zapsplat.com/
+# - https://freesound.org/
+# - https://www.soundjay.com/
+#
+# Recommended sound characteristics:
+# - Duration: 1-3 seconds
+# - Format: MP3 or WAV
+# - Size: Under 100KB
+# - Type: Gentle alert/chime sound
+#
+# For now, the system will work without sound, but you should add
+# a real notification.mp3 file for the complete experience.
