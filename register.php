@@ -94,90 +94,94 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - <?php echo APP_NAME; ?></title>
+    <title>Register - WorkFlow</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/images/favicon.ico">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="index.php" class="logo">
-                📋 Work Reminder
-            </a>
-            <div class="nav-links">
-                <a href="index.php" class="nav-link">Home</a>
-                <a href="login.php" class="nav-link">Login</a>
-                <a href="register.php" class="nav-link active">Register</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="auth-container">
-            <div class="glass-container auth-card">
-                <div class="auth-header">
-                    <h1>Create Account</h1>
-                    <p>Join us to manage your tasks efficiently</p>
-                </div>
-
-                <!-- Error Messages -->
-                <?php if (!empty($errors)): ?>
-                    <div class="alert alert-error">
-                        <?php foreach ($errors as $error): ?>
-                            <p><?php echo $error; ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Registration Form -->
-                <form id="registerForm" method="POST" class="auth-form">
-                    <div class="form-group">
-                        <label for="full_name" class="form-label">Full Name</label>
-                        <input type="text" id="full_name" name="full_name" class="form-control" 
-                               placeholder="Enter your full name" required
-                               value="<?php echo isset($_POST['full_name']) ? htmlspecialchars($_POST['full_name']) : ''; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" id="username" name="username" class="form-control" 
-                               placeholder="Choose a username" required
-                               value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" 
-                               placeholder="Enter your email" required
-                               value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" 
-                               placeholder="Create a password" required>
-                        <small class="form-help">Minimum 6 characters</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="confirm_password" class="form-label">Confirm Password</label>
-                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" 
-                               placeholder="Confirm your password" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-full">
-                        Create Account
-                    </button>
-                </form>
-
-                <div class="auth-footer">
-                    <p>Already have an account? <a href="login.php">Login here</a></p>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="index.php" class="logo">
+                    📋 WorkFlow
+                </a>
+                <div class="nav-links">
+                    <a href="index.php" class="nav-link">Home</a>
+                    <a href="login.php" class="nav-link">Login</a>
+                    <a href="register.php" class="nav-link active">Register</a>
                 </div>
             </div>
-        </div>
-    </main>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="card auth-card">
+                        <div class="auth-header">
+                            <h1>Create Account</h1>
+                            <p>Join us to manage your tasks efficiently</p>
+                        </div>
+
+                        <!-- Error Messages -->
+                        <?php if (!empty($errors)): ?>
+                            <div class="alert alert-error">
+                                <?php foreach ($errors as $error): ?>
+                                    <p><?php echo $error; ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- Registration Form -->
+                        <form id="registerForm" method="POST" class="auth-form">
+                            <div class="form-group">
+                                <label for="full_name" class="form-label">Full Name</label>
+                                <input type="text" id="full_name" name="full_name" class="form-control" 
+                                       placeholder="Enter your full name" required
+                                       value="<?php echo isset($_POST['full_name']) ? htmlspecialchars($_POST['full_name']) : ''; ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" id="username" name="username" class="form-control" 
+                                       placeholder="Choose a username" required
+                                       value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" 
+                                       placeholder="Enter your email" required
+                                       value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" 
+                                       placeholder="Create a password" required>
+                                <small class="form-help">Minimum 6 characters</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input type="password" id="confirm_password" name="confirm_password" class="form-control" 
+                                       placeholder="Confirm your password" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Create Account
+                            </button>
+                        </form>
+
+                        <div class="auth-footer">
+                            <p>Already have an account? <a href="login.php">Sign in</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <style>
         /* Authentication page styles */
@@ -185,67 +189,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 70px);
-            padding: 2rem;
+            min-height: calc(100vh - var(--navbar-height));
+            padding: var(--space-8);
         }
 
         .auth-card {
             width: 100%;
             max-width: 450px;
-            padding: 2.5rem;
+            padding: var(--space-8);
         }
 
         .auth-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-8);
         }
 
         .auth-header h1 {
             font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            color: var(--text-primary);
         }
 
         .auth-header p {
             color: var(--text-secondary);
+            font-size: 1rem;
         }
 
         .auth-form {
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-6);
         }
 
         .form-help {
             display: block;
-            margin-top: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
+            margin-top: var(--space-2);
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
         }
 
         .btn-full {
             width: 100%;
-            padding: 1rem;
+            padding: var(--space-4);
             font-size: 1rem;
+            font-weight: 600;
         }
 
         .auth-footer {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--glass-border);
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .auth-footer p {
+            margin-bottom: 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
 
         .auth-footer a {
-            color: var(--primary-color);
+            color: var(--primary-600);
             text-decoration: none;
             font-weight: 600;
+            transition: var(--transition-fast);
         }
 
         .auth-footer a:hover {
+            color: var(--primary-700);
             text-decoration: underline;
         }
 
         @media (max-width: 480px) {
             .auth-card {
-                padding: 1.5rem;
+                padding: var(--space-6);
             }
             
             .auth-header h1 {

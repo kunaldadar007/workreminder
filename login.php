@@ -75,88 +75,92 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - <?php echo APP_NAME; ?></title>
+    <title>Login - WorkFlow</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/images/favicon.ico">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="index.php" class="logo">
-                📋 Work Reminder
-            </a>
-            <div class="nav-links">
-                <a href="index.php" class="nav-link">Home</a>
-                <a href="login.php" class="nav-link active">Login</a>
-                <a href="register.php" class="nav-link">Register</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="auth-container">
-            <div class="glass-container auth-card">
-                <div class="auth-header">
-                    <h1>Welcome Back</h1>
-                    <p>Login to manage your tasks</p>
-                </div>
-
-                <!-- Success Message -->
-                <?php if (isset($_SESSION['success_message'])): ?>
-                    <div class="alert alert-success">
-                        <?php 
-                        echo $_SESSION['success_message'];
-                        unset($_SESSION['success_message']);
-                        ?>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Error Messages -->
-                <?php if (!empty($errors)): ?>
-                    <div class="alert alert-error">
-                        <?php foreach ($errors as $error): ?>
-                            <p><?php echo $error; ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Login Form -->
-                <form id="loginForm" method="POST" class="auth-form">
-                    <div class="form-group">
-                        <label for="username" class="form-label">Username or Email</label>
-                        <input type="text" id="username" name="username" class="form-control" 
-                               placeholder="Enter username or email" required
-                               value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" 
-                               placeholder="Enter your password" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="remember" id="remember">
-                            <span class="checkmark"></span>
-                            Remember me
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-full">
-                        Login
-                    </button>
-                </form>
-
-                <div class="auth-footer">
-                    <p>Don't have an account? <a href="register.php">Register here</a></p>
-                    <p><a href="forgot_password.php">Forgot password?</a></p>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="index.php" class="logo">
+                    📋 WorkFlow
+                </a>
+                <div class="nav-links">
+                    <a href="index.php" class="nav-link">Home</a>
+                    <a href="login.php" class="nav-link active">Login</a>
+                    <a href="register.php" class="nav-link">Register</a>
                 </div>
             </div>
-        </div>
-    </main>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="card auth-card">
+                        <div class="auth-header">
+                            <h1>Welcome Back</h1>
+                            <p>Sign in to your account to manage your tasks</p>
+                        </div>
+
+                        <!-- Success Message -->
+                        <?php if (isset($_SESSION['success_message'])): ?>
+                            <div class="alert alert-success">
+                                <?php 
+                                echo $_SESSION['success_message'];
+                                unset($_SESSION['success_message']);
+                                ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- Error Messages -->
+                        <?php if (!empty($errors)): ?>
+                            <div class="alert alert-error">
+                                <?php foreach ($errors as $error): ?>
+                                    <p><?php echo $error; ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" method="POST" class="auth-form">
+                            <div class="form-group">
+                                <label for="username" class="form-label">Username or Email</label>
+                                <input type="text" id="username" name="username" class="form-control" 
+                                       placeholder="Enter your username or email" required
+                                       value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" 
+                                       placeholder="Enter your password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="remember" id="remember">
+                                    <span class="checkmark"></span>
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div class="auth-footer">
+                            <p>Don't have an account? <a href="register.php">Sign up</a></p>
+                            <p><a href="forgot_password.php">Forgot password?</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <style>
         /* Authentication page styles */
@@ -164,33 +168,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 70px);
-            padding: 2rem;
+            min-height: calc(100vh - var(--navbar-height));
+            padding: var(--space-8);
         }
 
         .auth-card {
             width: 100%;
             max-width: 450px;
-            padding: 2.5rem;
+            padding: var(--space-8);
         }
 
         .auth-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-8);
         }
 
         .auth-header h1 {
             font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            color: var(--text-primary);
         }
 
         .auth-header p {
             color: var(--text-secondary);
+            font-size: 1rem;
         }
 
         .auth-form {
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-6);
         }
 
         .checkbox-label {
@@ -198,42 +204,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             align-items: center;
             cursor: pointer;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            gap: var(--space-3);
         }
 
         .checkbox-label input[type="checkbox"] {
-            margin-right: 0.5rem;
+            width: auto;
+            margin: 0;
         }
 
         .btn-full {
             width: 100%;
-            padding: 1rem;
+            padding: var(--space-4);
             font-size: 1rem;
+            font-weight: 600;
         }
 
         .auth-footer {
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--glass-border);
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--border-light);
         }
 
         .auth-footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-2);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
         }
 
         .auth-footer a {
-            color: var(--primary-color);
+            color: var(--primary-600);
             text-decoration: none;
             font-weight: 600;
+            transition: var(--transition-fast);
         }
 
         .auth-footer a:hover {
+            color: var(--primary-700);
             text-decoration: underline;
         }
 
         @media (max-width: 480px) {
             .auth-card {
-                padding: 1.5rem;
+                padding: var(--space-6);
             }
             
             .auth-header h1 {

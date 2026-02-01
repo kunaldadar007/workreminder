@@ -61,123 +61,126 @@ try {
     <link rel="icon" href="assets/images/favicon.ico">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="dashboard.php" class="logo">
-                📋 Work Reminder
-            </a>
-            <div class="nav-links">
-                <a href="dashboard.php" class="nav-link active">Dashboard</a>
-                <a href="tasks.php" class="nav-link">Tasks</a>
-                <a href="calendar.php" class="nav-link">Calendar</a>
-                <a href="chatbot.php" class="nav-link">Chatbot</a>
-                <div class="user-menu">
-                    <span class="user-name">Welcome, <?php echo htmlspecialchars($full_name); ?></span>
-                    <a href="api/logout.php" class="btn btn-secondary btn-sm">Logout</a>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="dashboard.php" class="logo">
+                    📋 WorkFlow
+                </a>
+                <div class="nav-links">
+                    <a href="dashboard.php" class="nav-link active">Dashboard</a>
+                    <a href="tasks.php" class="nav-link">Tasks</a>
+                    <a href="calendar.php" class="nav-link">Calendar</a>
+                    <a href="chatbot.php" class="nav-link">Chatbot</a>
+                    <div class="user-menu">
+                        <span class="user-name">Welcome, <?php echo htmlspecialchars($full_name); ?></span>
+                        <a href="api/logout.php" class="btn btn-secondary btn-sm">Logout</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h3>Menu</h3>
-        </div>
-        <nav class="sidebar-nav">
-            <a href="dashboard.php" class="sidebar-item active">
-                📊 Dashboard
-            </a>
-            <a href="tasks.php" class="sidebar-item">
-                📝 My Tasks
-            </a>
-            <a href="add_task.php" class="sidebar-item">
-                ➕ Add Task
-            </a>
-            <a href="calendar.php" class="sidebar-item">
-                📅 Calendar
-            </a>
-            <a href="chatbot.php" class="sidebar-item">
-                🤖 Chatbot
-            </a>
-            <a href="profile.php" class="sidebar-item">
-                👤 Profile
-            </a>
-            <a href="api/logout.php" class="sidebar-item">
-                🚪 Logout
-            </a>
         </nav>
-    </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Navigation</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.php" class="sidebar-item active">
+                    📊 Dashboard
+                </a>
+                <a href="tasks.php" class="sidebar-item">
+                    📝 My Tasks
+                </a>
+                <a href="add_task.php" class="sidebar-item">
+                    ➕ Add Task
+                </a>
+                <a href="calendar.php" class="sidebar-item">
+                    📅 Calendar
+                </a>
+                <a href="chatbot.php" class="sidebar-item">
+                    🤖 Chatbot
+                </a>
+                <a href="profile.php" class="sidebar-item">
+                    👤 Profile
+                </a>
+                <a href="api/logout.php" class="sidebar-item">
+                    🚪 Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
         <!-- Welcome Section -->
-        <div class="welcome-section">
-            <div class="glass-container welcome-card">
-                <h1>Welcome back, <?php echo htmlspecialchars($full_name); ?>! 👋</h1>
-                <p>Here's your task overview for today. Stay productive!</p>
-            </div>
-        </div>
+                <div class="welcome-section">
+                    <div class="welcome-card">
+                        <h1>Welcome back, <?php echo htmlspecialchars($full_name); ?>! 👋</h1>
+                        <p>Here's your task overview for today. Stay productive and keep up the great work!</p>
+                    </div>
+                </div>
 
-        <!-- Statistics Section -->
-        <section class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-card glass-container">
-                    <div class="stat-number" id="totalTasks"><?php echo $total_tasks; ?></div>
-                    <div class="stat-label">Total Tasks</div>
-                </div>
-                <div class="stat-card glass-container">
-                    <div class="stat-number" id="completedTasks"><?php echo $completed_tasks; ?></div>
-                    <div class="stat-label">Completed</div>
-                </div>
-                <div class="stat-card glass-container">
-                    <div class="stat-number" id="pendingTasks"><?php echo $pending_tasks; ?></div>
-                    <div class="stat-label">Pending</div>
-                </div>
-                <div class="stat-card glass-container">
-                    <div class="stat-number" id="todayTasks"><?php echo $today_tasks; ?></div>
-                    <div class="stat-label">Today's Tasks</div>
-                </div>
-            </div>
-        </section>
+                <!-- Statistics Section -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number"><?php echo $total_tasks; ?></div>
+                            <div class="stat-label">Total Tasks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number"><?php echo $completed_tasks; ?></div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number"><?php echo $pending_tasks; ?></div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number"><?php echo $today_tasks; ?></div>
+                            <div class="stat-label">Today's Tasks</div>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- Today's Tasks Section -->
-        <section class="today-tasks-section">
-            <div class="section-header">
-                <h2>Today's Tasks</h2>
-                <div class="section-actions">
-                    <button class="btn btn-primary" onclick="loadTodayTasks()">Refresh</button>
-                    <a href="add_task.php" class="btn btn-secondary">Add Task</a>
-                </div>
-            </div>
-            
-            <div class="glass-container tasks-container">
-                <div id="todayTasksContainer">
-                    <div class="spinner"></div>
-                </div>
-            </div>
-        </section>
+                <!-- Today's Tasks Section -->
+                <section class="today-tasks-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Today's Tasks</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-primary" onclick="loadTodayTasks()">Refresh</button>
+                            <a href="add_task.php" class="btn btn-secondary">Add Task</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div id="todayTasksContainer">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- Calendar Preview Section -->
-        <section class="calendar-preview-section">
-            <div class="section-header">
-                <h2>This Month</h2>
-                <a href="calendar.php" class="btn btn-secondary">View Full Calendar</a>
+                <!-- Calendar Preview Section -->
+                <section class="calendar-preview-section">
+                    <div class="section-header">
+                        <h2 class="section-title">This Month</h2>
+                        <a href="calendar.php" class="btn btn-secondary">View Full Calendar</a>
+                    </div>
+                    
+                    <div class="card">
+                        <div id="miniCalendar">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            
-            <div class="glass-container calendar-container">
-                <div id="miniCalendar">
-                    <div class="spinner"></div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </main>
 
     <!-- Chatbot Widget -->
     <div class="chatbot-container">
         <button class="chatbot-toggle" onclick="toggleChatbot()">
-            💬
+            
         </button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
@@ -234,7 +237,7 @@ try {
 
         .today-tasks-section,
         .calendar-preview-section {
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-8);
         }
 
         .tasks-container,
@@ -403,11 +406,11 @@ try {
                 if (data.success) {
                     renderTodayTasks(data.tasks);
                 } else {
-                    container.innerHTML = '<p class="text-center">Error loading tasks.</p>';
+                    container.innerHTML = '<p class="text-center text-secondary">Error loading tasks.</p>';
                 }
             } catch (error) {
                 console.error('Error loading today\'s tasks:', error);
-                container.innerHTML = '<p class="text-center">Error loading tasks.</p>';
+                container.innerHTML = '<p class="text-center text-secondary">Error loading tasks.</p>';
             }
         }
 
@@ -418,7 +421,7 @@ try {
             const container = document.getElementById('todayTasksContainer');
             
             if (tasks.length === 0) {
-                container.innerHTML = '<p class="text-center">No tasks for today. Great job!</p>';
+                container.innerHTML = '<p class="text-center text-secondary">No tasks for today. Great job!</p>';
                 return;
             }
             
@@ -472,11 +475,11 @@ try {
                 if (data.success) {
                     renderMiniCalendar(data.tasks);
                 } else {
-                    container.innerHTML = '<p class="text-center">Error loading calendar.</p>';
+                    container.innerHTML = '<p class="text-center text-secondary">Error loading calendar.</p>';
                 }
             } catch (error) {
                 console.error('Error loading calendar:', error);
-                container.innerHTML = '<p class="text-center">Error loading calendar.</p>';
+                container.innerHTML = '<p class="text-center text-secondary">Error loading calendar.</p>';
             }
         }
 
